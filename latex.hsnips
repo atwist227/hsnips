@@ -58,8 +58,12 @@ snippet != "no equals" iAm
 \neq 
 endsnippet
 
-snippet == " constan equals" iAm
+snippet == "constant equals" iAm
 \equiv 
+endsnippet
+
+snippet := "coloneqq" iAm
+\coloneqq 
 endsnippet
 
 snippet ~~ " Amppro equals" iAm
@@ -69,7 +73,6 @@ endsnippet
 snippet ~= " Amppro equals2" iAm
 \cong
 endsnippet
-
 
 snippet || "mid" im
  \mid 
@@ -100,7 +103,6 @@ snippet `^.*\)/` "Fraction with ()" Am
     rv = results;
     ``
 endsnippet
-
 
 snippet `(\\?[a-zA-Z]\w*)(bar|BAR)` "Bar" iAm
 \overline{``rv = m[1]``}
@@ -201,7 +203,6 @@ endsnippet
 snippet ZZ "Z" iAm
 \mathbb{Z}
 endsnippet
-
 
 priority 100
 snippet ... "cdots" iAm
@@ -456,7 +457,6 @@ snippet iid "independent and identical distribution" iAm
 \overset{\text{i.i.d.}}{\sim}
 endsnippet
 
-
 snippet defe "define equal" wAm
 \overset{\underset{\mathrm{def}}{}}{=}
 endsnippet
@@ -479,6 +479,10 @@ endsnippet
 
 snippet tit "text it" iAm
 \textit{$1}$0
+endsnippet
+
+snippet `(?<!\\),` "comma" iAm
+,\,
 endsnippet
 
 snippet `(\\\\)([a-zA-Z])` im
