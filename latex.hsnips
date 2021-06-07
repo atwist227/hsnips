@@ -37,6 +37,150 @@ function tes_matrix(nrow, ncol,t) {
 
 endglobal
 
+snippet template_beamer " beamer template" b
+\documentclass[compress,blue,10pt]{beamer}
+
+\mode<presentation>
+
+\usetheme{Berlin}
+  \setbeamercovered{transparent}
+  \setbeamertemplate{navigation symbols}{} % remove the navigation
+  \setbeamersize{text margin left=0.6cm, text margin right=0.6cm} % ÉèÖÃÒ³±ß¾à
+
+%\hypersetup{pdfpagemode=FullScreen}
+
+%\usecolortheme{lily}
+% color themes: albatross, beaver, beetle, crane, default, dolphin, dov, fly, lily, orchid, rose, seagull, seahorse, sidebartab, structure, whale, wolverine
+
+%\usefonttheme{serif}
+% font themes: default, professionalfonts, serif, structurebold, structureitalicserif, structuresmallcapsserif
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx,xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=brown}
+\usepackage{manfnt}
+\usepackage[english]{babel}
+% \usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{concrete}
+\usepackage{adjustbox}
+\usepackage{array}
+\usepackage[font={scriptsize,it}]{caption}
+\usepackage{biblatex}
+
+\usepackage{ctex}
+
+\bibliography{ref}
+
+\newtheorem{thm}{定理}[section]
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{remark}{Remark}
+
+\renewcommand{\footnotesize}{\tiny}
+\renewcommand*{\bibfont}{\scriptsize}
+% \renewcommand*{\bibfont}{\fontsize{5}{6}}
+\renewcommand{\baselinestretch}{1.1}
+
+\def\half{\frac 1 2}
+
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\brac}[1]{\left(#1\right)}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\nn}{\nonumber}
+\newcommand{\rd}{\mathrm{d}}
+\newcommand{\sT}{\mathscr{T}}
+\newcommand{\sF}{\mathscr{E}}
+\newcommand{\vf}{{\bf f}}
+\newcommand{\vn}{{\bf n}}
+
+\definecolor{brown(web)}{rgb}{0.65, 0.16, 0.16}
+\newcommand{\eps}{\varepsilon}
+
+\setbeamertemplate{footline}[frame number]
+
+%%%%% END =====================================================================
+
+
+%===== main part ==============================================================
+\begin{document}
+
+% ================
+% == title page ==
+% ================
+
+\small
+
+\title{${1:title}}
+
+% \subtitle{\hfill 开题报告}
+
+\author
+{\small ${2:author}\\\\
+\quad \\\\
+指导老师：${3:teacher}
+}
+
+
+\bigskip
+
+\date{\small}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% =======================
+% == Table of contents ==
+% =======================
+
+\begin{frame}
+  \frametitle{目录}
+  \tableofcontents
+  %[hideallsubsections] %[pausesections]
+\end{frame}
+
+\AtBeginSection[] % Do nothing for \section*
+{
+  \begin{frame}<beamer> %\frametitle{Outline}
+  % \tableofcontents[currentsection,hideallsubsections]%,currentsubsection]
+  \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+% ==========
+% == Body ==
+% ==========
+
+\section{Section One}
+
+\begin{frame}
+  $0
+\end{frame}
+
+% ===============
+% == Reference ==
+% ===============
+
+\begin{frame}[t,allowframebreaks]
+  \frametitle{文献}
+  \setbeamertemplate{bibliography item}[text]
+  \printbibliography
+ \end{frame}
+
+% ============
+% == ENDING ==
+% ============
+\begin{frame}[plain]
+
+    \centerline{\Huge\color{brown}\bfseries Thanks! }
+
+\end{frame}
+
+\end{document}
+endsnippet
 
 snippet // "Fraction" iAm
 \\frac{$1}{$2}$0
@@ -140,9 +284,9 @@ snippet `(\\?[a-zA-Z]\w*)(ra)` "Vector postfix" iAm
 \overrightarrow{``rv = m[1]``}
 endsnippet
 
-snippet `(\\?[a-zA-Z]\w*)(dot)` "dot" iAm
-\dot{``rv = m[1]``}
-endsnippet
+# snippet `(\\?[a-zA-Z]\w*)(dot)` "dot" iAm
+# \dot{``rv = m[1]``}
+# endsnippet
 
 snippet `(\\?[a-zA-Z]\w*)(ddot)` "ddot" iAm
 \ddot{``rv = m[1]``}
@@ -246,6 +390,11 @@ endsnippet
 priority 100
 snippet `([A-Za-z])(\d)` "auto subscript" wAmm
 `` rv = m[1]``_``rv = m[2]``
+endsnippet
+
+priority 100
+snippet `([A-Za-z])_(\d)(\d)` "auto subscript" wAmm
+`` rv = m[1]``_{``rv = m[2]````rv = m[3]``}
 endsnippet
 
 snippet ceil "ceil" iAm
@@ -481,7 +630,7 @@ snippet tit "text it" iAm
 \textit{$1}$0
 endsnippet
 
-snippet `(?<!\\),` "comma" iAm
+snippet `,,` "comma" iAm
 ,\,
 endsnippet
 
