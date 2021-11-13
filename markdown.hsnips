@@ -768,9 +768,9 @@ snippet bec "mathbb" iAm
 \because 
 endsnippet
 
-snippet thr "mathbb" iAm
-\therefore 
-endsnippet
+\\ snippet thr "mathbb" iAm
+\\ \therefore 
+\\ endsnippet
 
 priority 10000
 snippet `([a-zA-Z])mcal` "mathcal" iAm
