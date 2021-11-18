@@ -182,6 +182,45 @@ snippet template_beamer " beamer template" b
 \end{document}
 endsnippet
 
+snippet template_chinese "Chinese LaTeX template" b
+% !TeX program = xelatex
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm]{geometry}
+\usepackage{amsmath,amsthm,amssymb,graphicx,mathtools,tikz,hyperref}
+\usepackage{harpoon} % 半箭头宏包
+\usetikzlibrary{positioning} 
+
+% 定制列表样式
+\renewcommand{\labelenumi}{(\theenumi)}
+% 公式编号
+\numberwithin{equation}{subsection}
+
+% 中文定理环境
+\theoremstyle{definition}\newtheorem{theorem}{定理}[subsection]
+\theoremstyle{definition}\newtheorem{proposition}[theorem]{命题}
+\theoremstyle{definition}\newtheorem{corollary}[theorem]{推论}
+\theoremstyle{definition}\newtheorem{lemma}[theorem]{引理}
+\theoremstyle{remark}\newtheorem*{remark}{注}
+\theoremstyle{remark}\newtheorem*{hint}{提示}
+\theoremstyle{definition}\newtheorem{definition}{定义}[subsection]
+
+ \hypersetup{
+ colorlinks,
+ linkcolor=blue
+ }
+
+\title{$1}
+\author{$2}
+\date{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+$0
+\end{document}
+endsnippet
+
 snippet // "Fraction" iAm
 \\frac{$1}{$2}$0
 endsnippet
@@ -914,4 +953,8 @@ snippet subplusmat "omission" iAm
     \\vdots & \\vdots & \\ddots & \\vdots \\\\
     ${1:a}_{n1}+{2:b}_{n1} & ${1:a}_{n2}+{2:b}_{n2} & \\cdots & ${1:a}_{nn}+{2:b}_{nn}
 \\end{pmatrix}
+endsnippet
+
+snippet todo "TODO label" w
+\textcolor{red}{TODO}
 endsnippet
