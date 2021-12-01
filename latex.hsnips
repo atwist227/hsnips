@@ -192,6 +192,7 @@ snippet template_chinese "Chinese LaTeX template" b
 
 % 定制列表样式
 \renewcommand{\labelenumi}{(\theenumi)}
+%\renewcommand{\labelenumii}{(\roman{enumii}.)}
 % 公式编号
 \numberwithin{equation}{subsection}
 
@@ -203,6 +204,45 @@ snippet template_chinese "Chinese LaTeX template" b
 \theoremstyle{remark}\newtheorem*{remark}{注}
 \theoremstyle{remark}\newtheorem*{hint}{提示}
 \theoremstyle{definition}\newtheorem{definition}{定义}[subsection]
+
+ \hypersetup{
+ colorlinks,
+ linkcolor=blue
+ }
+
+\title{$1}
+\author{$2}
+\date{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+$0
+\end{document}
+endsnippet
+
+snippet template "LaTeX template" b
+\documentclass[11pt,a4paper]{article}
+\usepackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm]{geometry}
+\usepackage{amsmath,amsthm,amssymb,graphicx,mathtools,tikz,hyperref}
+\usepackage{harpoon} % half arrow
+\usetikzlibrary{positioning} 
+
+% style of enumi
+\renewcommand{\labelenumi}{(\theenumi)}
+%\renewcommand{\labelenumii}{(\roman{enumii}.)}
+% number of equations
+\numberwithin{equation}{subsection}
+
+% Theorem env
+\theoremstyle{definition}\newtheorem{theorem}{Theorem}[subsection]
+\theoremstyle{definition}\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}\newtheorem*{remark}{Remark}
+\theoremstyle{remark}\newtheorem*{hint}{Hint}
+\theoremstyle{definition}\newtheorem{definition}{Definition}[subsection]
 
  \hypersetup{
  colorlinks,
