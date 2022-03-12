@@ -205,15 +205,18 @@ linkcolor=blue
 
 % 伪代码
 \usepackage{algorithm}
-\usepackage{algorithmic}
-\renewcommand{\algorithmicrequire{\textbf{Input:}}
-\renewcommand{\algorithmicensure{\textbf{Output:}}
+% 三选一
+\usepackage{algpseudocode} % (推荐使用) 首字母大写
+% \usepackage{algcompatible} % 全大写或首字母大写
+% \usepackage{algorithmic} % 全大写
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
 
 % 定制列表样式
-\renewcommand{\labelenumi}{(\theenumi)}
+% \renewcommand{\labelenumi}{(\theenumi)}
 %\renewcommand{\labelenumii}{(\roman{enumii}.)}
 % 公式编号
-\numberwithin{equation}{subsection}
+% \numberwithin{equation}{subsection}
 
 % 中文定理环境
 \theoremstyle{definition}\newtheorem{theorem}{定理}[subsection]
@@ -231,7 +234,7 @@ linkcolor=blue
 \begin{document}
 
 \maketitle
-\tableofcontents
+% \tableofcontents
 $0
 
 % 参考文献目录
@@ -261,16 +264,19 @@ linkcolor=blue
 % \addbibresource{ref.bib} %Import the bibliography file
 
 % pseudocode
-% \usepackage{algorithm}
-% \usepackage{algorithmic}
-% \renewcommand{\algorithmicrequire{\textbf{Input:}}
-% \renewcommand{\algorithmicensure{\textbf{Output:}}
+\usepackage{algorithm}
+% Chose ONE of them
+\usepackage{algpseudocode} % (recommended) typically title-cased
+% \usepackage{algcompatible} % (to compatible with the algorithmic package) uppercased and title-cased command names 
+% \usepackage{algorithmic} % (old documents) uppercased
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
 
 % style of enumi
-\renewcommand{\labelenumi}{(\theenumi)}
+% \renewcommand{\labelenumi}{(\theenumi)}
 %\renewcommand{\labelenumii}{(\roman{enumii}.)}
 % number of equations
-\numberwithin{equation}{subsection}
+% \numberwithin{equation}{subsection}
 
 % Theorem env
 \theoremstyle{definition}\newtheorem{theorem}{Theorem}[subsection]
@@ -288,7 +294,7 @@ linkcolor=blue
 \begin{document}
 
 \maketitle
-\tableofcontents
+% \tableofcontents
 $0
 
 % Reference
