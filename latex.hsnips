@@ -186,9 +186,28 @@ snippet template_chinese "Chinese LaTeX template" b
 % !TeX program = xelatex
 \documentclass[11pt,a4paper]{ctexart}
 \usepackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm]{geometry}
-\usepackage{amsmath,amsthm,amssymb,graphicx,mathtools,tikz,hyperref}
-\usepackage{harpoon} % 半箭头宏包
+
+% 数学
+\usepackage{amsmath,amsthm,amssymb,graphicx,mathtools,tikz}
 \usetikzlibrary{positioning} 
+\usepackage{harpoon} % 半箭头宏包
+
+% 超链接样式
+\usepackage{hyperref}
+\hypersetup{
+colorlinks,
+linkcolor=blue
+}
+
+% 参考文献
+% \usepackage{biblatex} %Imports biblatex package
+% \addbibresource{ref.bib} %Import the bibliography file
+
+% 伪代码
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\renewcommand{\algorithmicrequire{\textbf{Input:}}
+\renewcommand{\algorithmicensure{\textbf{Output:}}
 
 % 定制列表样式
 \renewcommand{\labelenumi}{(\theenumi)}
@@ -205,11 +224,6 @@ snippet template_chinese "Chinese LaTeX template" b
 \theoremstyle{remark}\newtheorem*{hint}{提示}
 \theoremstyle{definition}\newtheorem{definition}{定义}[subsection]
 
- \hypersetup{
- colorlinks,
- linkcolor=blue
- }
-
 \title{$1}
 \author{$2}
 \date{}
@@ -219,15 +233,38 @@ snippet template_chinese "Chinese LaTeX template" b
 \maketitle
 \tableofcontents
 $0
+
+% 参考文献目录
+% \printbibliography %Prints bibliography
+
 \end{document}
 endsnippet
 
 snippet template "LaTeX template" b
 \documentclass[11pt,a4paper]{article}
 \usepackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm]{geometry}
-\usepackage{amsmath,amsthm,amssymb,graphicx,mathtools,tikz,hyperref}
-\usepackage{harpoon} % half arrow
+
+% math
+\usepackage{amsmath,amsthm,amssymb,graphicx,mathtools,tikz}
 \usetikzlibrary{positioning} 
+\usepackage{harpoon} % harf arrow
+
+% style of hyperref
+\usepackage{hyperref}
+\hypersetup{
+colorlinks,
+linkcolor=blue
+}
+
+% biblatex
+% \usepackage{biblatex} %Imports biblatex package
+% \addbibresource{ref.bib} %Import the bibliography file
+
+% pseudocode
+% \usepackage{algorithm}
+% \usepackage{algorithmic}
+% \renewcommand{\algorithmicrequire{\textbf{Input:}}
+% \renewcommand{\algorithmicensure{\textbf{Output:}}
 
 % style of enumi
 \renewcommand{\labelenumi}{(\theenumi)}
@@ -244,11 +281,6 @@ snippet template "LaTeX template" b
 \theoremstyle{remark}\newtheorem*{hint}{Hint}
 \theoremstyle{definition}\newtheorem{definition}{Definition}[subsection]
 
- \hypersetup{
- colorlinks,
- linkcolor=blue
- }
-
 \title{$1}
 \author{$2}
 \date{}
@@ -258,6 +290,10 @@ snippet template "LaTeX template" b
 \maketitle
 \tableofcontents
 $0
+
+% Reference
+% \printbibliography %Prints bibliography
+
 \end{document}
 endsnippet
 
@@ -997,4 +1033,15 @@ endsnippet
 
 snippet todo "TODO label" w
 \textcolor{red}{TODO}
+endsnippet
+
+snippet pseudocode "pseudocode" b
+\begin{algorithm}
+	%\textsl{}\setstretch{1.8}
+	\caption{$1}
+	\label{$2}
+	\begin{algorithmic}[1]
+		$0
+	\end{algorithmic}  
+\end{algorithm}
 endsnippet
