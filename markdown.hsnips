@@ -182,50 +182,81 @@ snippet template_beamer " beamer template" b
 \end{document}
 endsnippet
 
-snippet template_chinese "Chinese LaTeX template" b
+snippet template "LaTeX template" b
 % !TeX program = xelatex
-\documentclass[11pt,a4paper]{ctexart}
+\documentclass[11pt,a4paper]{article}
 \usepackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm]{geometry}
 
-% 数学
+%% Chinese support
+\usepackage{xeCJK}
+
+%% Math
 \usepackage{amsmath,amsthm,amssymb,graphicx,mathtools,tikz}
 \usetikzlibrary{positioning} 
-\usepackage{harpoon} % 半箭头宏包
+\usepackage{harpoon}
 
-% 超链接样式
+%% figure
+\usepackage{subfigure}
+\usepackage{parskip}
+
+%% Hyperlink style
 \usepackage{hyperref}
 \hypersetup{
 colorlinks,
 linkcolor=blue
 }
 
-% 参考文献
+%% Reference
 % \usepackage{biblatex} %Imports biblatex package
 % \addbibresource{ref.bib} %Import the bibliography file
 
-% 伪代码
+%% algorithm
 \usepackage{algorithm}
-% 三选一
-\usepackage{algpseudocode} % (推荐使用) 首字母大写
-% \usepackage{algcompatible} % 全大写或首字母大写
-% \usepackage{algorithmic} % 全大写
+% Chose one of the following three packages
+\usepackage{algpseudocode} % (recommended) Capitalize the first letter
+% \usepackage{algcompatible} % All caps or capital letters
+% \usepackage{algorithmic} % All caps
+
+%% table
+\usepackage{diagbox} % head slant
+% packages for reading .csv file and generating tables
+\usepackage{csvsimple}
+\usepackage{pgfplotstable}
+\usepackage{datatool}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{longtable}
+\usepackage{multirow}
+\sisetup{round-mode=places,
+         table-number-alignment = center-decimal-marker
+         }
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 
-% 定制列表样式
+%% enumerate style
 % \renewcommand{\labelenumi}{(\theenumi)}
-%\renewcommand{\labelenumii}{(\roman{enumii}.)}
-% 公式编号
+% \renewcommand{\labelenumii}{(\roman{enumii}.)}
+
+%% number of equation
 % \numberwithin{equation}{subsection}
 
-% 中文定理环境
-\theoremstyle{definition}\newtheorem{theorem}{定理}[subsection]
-\theoremstyle{definition}\newtheorem{proposition}[theorem]{命题}
-\theoremstyle{definition}\newtheorem{corollary}[theorem]{推论}
-\theoremstyle{definition}\newtheorem{lemma}[theorem]{引理}
-\theoremstyle{remark}\newtheorem*{remark}{注}
-\theoremstyle{remark}\newtheorem*{hint}{提示}
-\theoremstyle{definition}\newtheorem{definition}{定义}[subsection]
+% Theorem env ---- Chinese
+% \theoremstyle{definition}\newtheorem{theorem}{定理}[subsection]
+% \theoremstyle{definition}\newtheorem{proposition}[theorem]{命题}
+% \theoremstyle{definition}\newtheorem{corollary}[theorem]{推论}
+% \theoremstyle{definition}\newtheorem{lemma}[theorem]{引理}
+% \theoremstyle{remark}\newtheorem*{remark}{注}
+% \theoremstyle{remark}\newtheorem*{hint}{提示}
+% \theoremstyle{definition}\newtheorem{definition}{定义}[subsection]
+
+% Theorem env
+% \theoremstyle{definition}\newtheorem{theorem}{Theorem}[subsection]
+% \theoremstyle{definition}\newtheorem{proposition}[theorem]{Proposition}
+% \theoremstyle{definition}\newtheorem{corollary}[theorem]{Corollary}
+% \theoremstyle{definition}\newtheorem{lemma}[theorem]{Lemma}
+% \theoremstyle{remark}\newtheorem*{remark}{Remark}
+% \theoremstyle{remark}\newtheorem*{hint}{Hint}
+% \theoremstyle{definition}\newtheorem{definition}{Definition}[subsection]
 
 \title{$1}
 \author{$2}
@@ -238,66 +269,6 @@ linkcolor=blue
 $0
 
 % 参考文献目录
-% \printbibliography %Prints bibliography
-
-\end{document}
-endsnippet
-
-snippet template "LaTeX template" b
-\documentclass[11pt,a4paper]{article}
-\usepackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm]{geometry}
-
-% math
-\usepackage{amsmath,amsthm,amssymb,graphicx,mathtools,tikz}
-\usetikzlibrary{positioning} 
-\usepackage{harpoon} % harf arrow
-
-% style of hyperref
-\usepackage{hyperref}
-\hypersetup{
-colorlinks,
-linkcolor=blue
-}
-
-% biblatex
-% \usepackage{biblatex} %Imports biblatex package
-% \addbibresource{ref.bib} %Import the bibliography file
-
-% pseudocode
-\usepackage{algorithm}
-% Chose ONE of them
-\usepackage{algpseudocode} % (recommended) typically title-cased
-% \usepackage{algcompatible} % (to compatible with the algorithmic package) uppercased and title-cased command names 
-% \usepackage{algorithmic} % (old documents) uppercased
-\renewcommand{\algorithmicrequire}{\textbf{Input:}}
-\renewcommand{\algorithmicensure}{\textbf{Output:}}
-
-% style of enumi
-% \renewcommand{\labelenumi}{(\theenumi)}
-%\renewcommand{\labelenumii}{(\roman{enumii}.)}
-% number of equations
-% \numberwithin{equation}{subsection}
-
-% Theorem env
-\theoremstyle{definition}\newtheorem{theorem}{Theorem}[subsection]
-\theoremstyle{definition}\newtheorem{proposition}[theorem]{Proposition}
-\theoremstyle{definition}\newtheorem{corollary}[theorem]{Corollary}
-\theoremstyle{definition}\newtheorem{lemma}[theorem]{Lemma}
-\theoremstyle{remark}\newtheorem*{remark}{Remark}
-\theoremstyle{remark}\newtheorem*{hint}{Hint}
-\theoremstyle{definition}\newtheorem{definition}{Definition}[subsection]
-
-\title{$1}
-\author{$2}
-\date{}
-
-\begin{document}
-
-\maketitle
-% \tableofcontents
-$0
-
-% Reference
 % \printbibliography %Prints bibliography
 
 \end{document}
@@ -401,9 +372,9 @@ snippet `(\\?[a-zA-Z]\w*)(vec)` "Vector postfix" iAm
 \vec{``rv = m[1]``}
 endsnippet
 
-snippet `(\\?[a-zA-Z]\w*)(ra)` "Vector postfix" iAm
-\overrightarrow{``rv = m[1]``}
-endsnippet
+# snippet `(\\?[a-zA-Z]\w*)(ra)` "Vector postfix" iAm
+# \overrightarrow{``rv = m[1]``}
+# endsnippet
 
 # snippet `(\\?[a-zA-Z]\w*)(dot)` "dot" iAm
 # \dot{``rv = m[1]``}
@@ -551,7 +522,7 @@ snippet lra "leftangle rightangle" iAm
 endsnippet
 
 snippet sum "sum" wAm
-\sum_{n=${1:1}}^{${2:\infty}} ${3:a_n z^n}
+\sum_{${1:n}=${2:1}}^{${3:\infty}} $0
 endsnippet
 
 snippet taylor "taylor" wAm
@@ -566,7 +537,7 @@ snippet prod "product" wAm
 \prod_{${1:n=${2:1}}}^{${3:\infty}} ${4:${VISUAL}} $0
 endsnippet
 
-snippet part "d/dx" wAm
+snippet part "d/dx" wm
 \frac{\partial ${1:V}}{\partial ${2:x}}$0
 endsnippet
 
@@ -804,7 +775,7 @@ snippet rvec "row vector" iAm
 endsnippet
 
 priority 300
-snippet `(DINT|dint)` "integral" wAm
+snippet int "integral" wAm
 \int_{${1:-\infty}}^{${2:\infty}} ${3} \\mathrm{d}${4:x} $0
 endsnippet
 
@@ -814,7 +785,7 @@ snippet `(?<!\\)(sin|cos|arccot|cot|csc|ln|log|exp|star|perp)` "ln" wAm
 endsnippet
 
 priority 10000
-snippet `(?<!\\)(arcsin|arccos|arctan|arccot|arccsc|arcsec|pi|zeta|oint|iiint|iint|int)` "ln" wAm
+snippet `(?<!\\)(arcsin|arccos|arctan|arccot|arccsc|arcsec|pi|zeta|oint|iiint|iint)` "ln" wAm
 \\``rv = m[1]``
 endsnippet
 
