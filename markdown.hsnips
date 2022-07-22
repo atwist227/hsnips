@@ -188,7 +188,7 @@ snippet template "LaTeX template" b
 \usepackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm]{geometry}
 
 %% Chinese support
-\usepackage{xeCJK}
+\usepackage{ctex}
 
 %% Math
 \usepackage{amsmath,amsthm,amssymb,graphicx,mathtools,tikz}
@@ -349,7 +349,7 @@ snippet `(\\?[a-zA-Z]\w*)(td|TD)` "tilde" iAm
 endsnippet
 
 snippet `(\\?[a-zA-Z]\w*)(hat|HAT)` "hat" iAm
-\hat{``rv = m[1]``}
+\widehat{``rv = m[1]``}
 endsnippet
 
 snippet `(\\?[a-zA-Z]\w*)(bf|BF)` "mathbf" iAm
@@ -365,16 +365,16 @@ snippet bar "bar" iAm
 endsnippet
 
 snippet hat "hat" iAm
-\hat{$1}$0
+\widehat{$1}$0
 endsnippet
 
-snippet `(\\?[a-zA-Z]\w*)(vec)` "Vector postfix" iAm
-\vec{``rv = m[1]``}
-endsnippet
-
-# snippet `(\\?[a-zA-Z]\w*)(ra)` "Vector postfix" iAm
-# \overrightarrow{``rv = m[1]``}
+# snippet `(\\?[a-zA-Z]\w*)(vec)` "Vector postfix" iAm
+# \vec{``rv = m[1]``}
 # endsnippet
+
+snippet `(\\?[a-zA-Z]\w*)(vv)` "Vector postfix" iAm
+\overrightarrow{``rv = m[1]``}
+endsnippet
 
 # snippet `(\\?[a-zA-Z]\w*)(dot)` "dot" iAm
 # \dot{``rv = m[1]``}
@@ -384,9 +384,9 @@ snippet `(\\?[a-zA-Z]\w*)(ddot)` "ddot" iAm
 \ddot{``rv = m[1]``}
 endsnippet
 
-snippet `(\\?[a-zA-Z]\w*)(bs)` "boldsymbol" iAm
-\boldsymbol{``rv = m[1]``}
-endsnippet
+\\ snippet `(\\?[a-zA-Z]\w*)(bs)` "boldsymbol" iAm
+\\ \boldsymbol{``rv = m[1]``}
+\\ endsnippet
 
 snippet vdash "vdash" iAm
 \\vdash
@@ -457,27 +457,27 @@ snippet ifonlyif "if and only if" wAmm
 \iff
 endsnippet
 
-snippet im "inline Math" wA
-$${1}$$0
-endsnippet
+\\ snippet im "inline Math" wA
+\\ $${1}$$0
+\\ endsnippet
+\\ 
+\\ snippet im "inline Math" wA
+\\ $${1}$``
+\\ let str = t[0];
+\\ let test = str.charAt(str.length - 1);
+\\ if (test != ',' &&  test != '.' &&  test != '-' && test !='?' && test !=' '){
+\\ 	rv = ' ';
+\\ }
+\\ else{
+\\ 	rv = '';
+\\ }``$2
+\\ endsnippet
 
-snippet im "inline Math" wA
-$${1}$``
-let str = t[0];
-let test = str.charAt(str.length - 1);
-if (test != ',' &&  test != '.' &&  test != '-' && test !='?' && test !=' '){
-	rv = ' ';
-}
-else{
-	rv = '';
-}``$2
-endsnippet
-
-snippet dm "display Math" wA
-$$
-${1}
-$$
-endsnippet
+\\ snippet dm "display Math" wA
+\\ $$
+\\ ${1}
+\\ $$
+\\ endsnippet
 
 priority 100
 snippet `([A-Za-z])(\d)` "auto subscript" wAmm
@@ -497,9 +497,9 @@ snippet floor "floor" iAm
 \left\lfloor $1 \right\rfloor$0
 endsnippet
 
-snippet set "left( right)" Aim
-\\{${1}\\}$0
-endsnippet
+\\ snippet set "left( right)" Aim
+\\ \\left\\{${1}\\right\\}$0
+\\ endsnippet
 
 snippet lrb "left( right)" Aim
 \left( ${1} \right) $0
@@ -648,11 +648,11 @@ snippet xx "cross" iAm
 \times 
 endsnippet
 
-snippet case "cases" wAm
-\begin{cases}
-	$1 \\\\
-\end{cases}
-endsnippet
+# snippet case "cases" wAm
+# \begin{cases}
+# 	$1 \\\\
+# \end{cases}
+# endsnippet
 
 snippet ali "aligned" wAm
 \begin{aligned}
@@ -791,7 +791,7 @@ endsnippet
 
 priority 200
 
-snippet `(?<!\\)(mu|alpha|sigma|rho|beta|gamma|delta|zeta|eta|varepsilon|theta|iota|kappa|vartheta|lambda|nu|pi|rho|tau|upsilon|varphi|phi|chi|psi|omega|Gamma|Delta|Theta|Lambda|Xi|Pi|Sigma|Upsilon|Phi|Psi|Omega)` "greek" wAm
+snippet `(?<!\\)(mu|alpha|sigma|rho|beta|gamma|delta|zeta|eta|varepsilon|theta|iota|kappa|vartheta|lambda|nu|pi|rho|tau|upsilon|varphi|phi|chi|psi|omega|Gamma|Delta|Theta|Lambda|Xi|Pi|Sigma|Upsilon|Phi|Psi|Omega|min|max)` "greek" wAm
 \\``rv = m[0]``
 endsnippet
 
@@ -802,9 +802,9 @@ snippet `(?<![\\a-zA-Z])(diAmg|rank|lcm)` "math function" wAm
 endsnippet
 // tr 尚未加入
 
-snippet `(?<![\\a-zA-Z])arg(max|min)` "argmin/max" wAm
-\mathop{\arg\\ ``rv = m[1]``}
-endsnippet
+// snippet `(?<![\\a-zA-Z])arg(max|min)` "argmin/max" wAm
+// \mathop{\arg\\ ``rv = m[1]``}
+// endsnippet
 
 snippet ' "prime" i
 ^\prime
@@ -874,6 +874,7 @@ snippet ** "dot multiply" iAm
 \cdot 
 endsnippet
 
+priority 10000
 snippet abs "abstract value" iAm
 \left\vert ${1} \right\vert $0
 endsnippet
@@ -1008,7 +1009,7 @@ snippet subplusmat "omission" iAm
 \\end{pmatrix}
 endsnippet
 
-snippet todo "TODO label" w
+snippet todo "TODO label" iAm
 \textcolor{red}{TODO}
 endsnippet
 
