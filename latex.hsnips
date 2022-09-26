@@ -279,7 +279,7 @@ snippet // "Fraction" iAm
 endsnippet
 
 snippet >= "lkjl" iAm
-\geqslant $0
+\geq $0
 endsnippet
 
 snippet dis "displaystyle" iAm
@@ -287,7 +287,7 @@ snippet dis "displaystyle" iAm
 endsnippet
 
 snippet <= "Fraction" iAm
-\leqslant $0
+\leq $0
 endsnippet
 
 snippet != "no equals" iAm
@@ -357,7 +357,7 @@ snippet `(\\?[a-zA-Z]\w*)(bf|BF)` "mathbf" iAm
 endsnippet
 
 snippet `(\\?[a-zA-Z]\w*)(bm|BM)` "bm" iAm
-\bm{``rv = m[1]``}
+\boldmath{``rv = m[1]``}
 endsnippet
 
 snippet bar "bar" iAm
@@ -509,8 +509,9 @@ snippet lrv "left| right|" Aim
 \left| ${1} \right| $0
 endsnippet
 
-snippet lrc "left\{ right\}" Aim
-\left\\{ ${1} \right\\} $0
+\\ curly braces
+snippet lrc "left\{ right\}" Aim 
+\left\\{ ${1} \right\\} $0 
 endsnippet
 
 snippet lrs "left[ right]" Aim
