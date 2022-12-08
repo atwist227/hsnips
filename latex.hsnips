@@ -428,6 +428,10 @@ snippet RR "R" iAm
 \mathbb{R}^{$1}
 endsnippet
 
+snippet CC "R" iAm
+\mathbb{C}^{$1}
+endsnippet
+
 snippet NN "N" iAm
 \mathbb{N}
 endsnippet
@@ -781,8 +785,12 @@ snippet int "integral" wAm
 endsnippet
 
 priority 100
-snippet `(?<!\\)(sin|cos|arccot|cot|csc|ln|log|exp|star|perp)` "ln" wAm
+snippet `(?<!\\)(sin|cos|tan|arccot|cot|csc|ln|log|exp|star|perp)` "ln" wAm
 \\``rv = m[1]``
+endsnippet
+
+snippet `(?<!\\)(det|diag)` "operatorname" wAm
+\\operatorname{``rv = m[1]``}
 endsnippet
 
 priority 10000
@@ -798,9 +806,6 @@ endsnippet
 
 priority 100
 
-snippet `(?<![\\a-zA-Z])(diAmg|rank|lcm)` "math function" wAm
-\\operatorname{``rv = m[1]``}
-endsnippet
 // tr 尚未加入
 
 // snippet `(?<![\\a-zA-Z])arg(max|min)` "argmin/max" wAm
@@ -1010,8 +1015,8 @@ snippet subplusmat "omission" iAm
 \\end{pmatrix}
 endsnippet
 
-snippet todo "TODO label" iAm
-\textcolor{red}{TODO}
+snippet RED "Red text" i
+\textcolor{red}{$1}
 endsnippet
 
 snippet pseudocode "pseudocode" b
