@@ -183,7 +183,7 @@ snippet template_beamer " beamer template" b
 endsnippet
 
 snippet template "LaTeX template" b
-% !TeX program = xelatex
+%!TeX program = xelatex
 \documentclass[11pt,a4paper]{article}
 \usepackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm]{geometry}
 
@@ -233,21 +233,33 @@ linkcolor=blue
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 
+% 挖空
+\usepackage{xcolor}
+\usepackage{tagging}
+\usetag{ans}% 注释掉该行语句不显示答案
+\usepackage{ulem}
+\newcommand\myuline{\bgroup\markoverwith
+	{\textcolor{black}{\rule[-0.5ex]{2pt}{0.4pt}}}\ULon}
+\newcommand{\answer}[1]{\iftagged{ans}{\textcolor{red}{\uline{#1}}}{
+	{\color{white}\myuline{#1}}}}
+	
 %% enumerate style
-% \renewcommand{\labelenumi}{(\theenumi)}
+%% counter: \roman, \Roman, \arabic, \alph, \Alph, \fnsymbol
+% \renewcommand{\labelenumi}{(\arabic{enumi})}
 % \renewcommand{\labelenumii}{(\roman{enumii}.)}
 
 %% number of equation
 % \numberwithin{equation}{subsection}
 
 % Theorem env ---- Chinese
-% \theoremstyle{definition}\newtheorem{theorem}{定理}[subsection]
-% \theoremstyle{definition}\newtheorem{proposition}[theorem]{命题}
-% \theoremstyle{definition}\newtheorem{corollary}[theorem]{推论}
-% \theoremstyle{definition}\newtheorem{lemma}[theorem]{引理}
-% \theoremstyle{remark}\newtheorem*{remark}{注}
-% \theoremstyle{remark}\newtheorem*{hint}{提示}
-% \theoremstyle{definition}\newtheorem{definition}{定义}[subsection]
+\theoremstyle{definition}\newtheorem{theorem}{定理}[subsection]
+\theoremstyle{definition}\newtheorem{proposition}[theorem]{命题}
+\theoremstyle{definition}\newtheorem{corollary}[theorem]{推论}
+\theoremstyle{definition}\newtheorem{lemma}[theorem]{引理}
+\theoremstyle{definition}\newtheorem{question}{问题}
+\theoremstyle{remark}\newtheorem*{remark}{注}
+\theoremstyle{remark}\newtheorem*{hint}{提示}
+\theoremstyle{definition}\newtheorem{definition}{定义}[subsection]
 
 % Theorem env
 % \theoremstyle{definition}\newtheorem{theorem}{Theorem}[subsection]
@@ -822,7 +834,7 @@ snippet -- "setminus" iAm
 endsnippet
 
 snippet norm "norm" iAm
-\| $1 \| $0
+\| $1 \|_{$2}^{$3} $0
 endsnippet
 
 snippet lll "l" iAm
