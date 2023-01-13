@@ -357,11 +357,11 @@ snippet `(\\?[a-zA-Z]\w*)(bar|BAR)` "Bar" iAm
 endsnippet
 
 snippet `(\\?[a-zA-Z]\w*)(td|TD)` "tilde" iAm
-\widetilde{``rv = m[1]``}
+\tilde{``rv = m[1]``}
 endsnippet
 
 snippet `(\\?[a-zA-Z]\w*)(hat|HAT)` "hat" iAm
-\widehat{``rv = m[1]``}
+\hat{``rv = m[1]``}
 endsnippet
 
 snippet `(\\?[a-zA-Z]\w*)(bf|BF)` "mathbf" iAm
@@ -547,7 +547,7 @@ snippet taylor "taylor" wAm
 endsnippet
 
 snippet lim "limit" wAm
-\lim_{${1:n} \to ${2:\infty}} 
+\lim\limits_{${1:n} \to ${2:\infty}} 
 endsnippet
 
 snippet prod "product" wAm
