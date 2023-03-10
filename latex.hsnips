@@ -199,6 +199,10 @@ snippet template "LaTeX template" b
 \usepackage{subfigure}
 \usepackage{parskip}
 
+%drawing
+\usepackage{tikz}
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
 %% Hyperlink style
 \usepackage{hyperref}
 \hypersetup{
@@ -234,15 +238,19 @@ linkcolor=blue
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 
 % 挖空
-\usepackage{xcolor}
-\usepackage{tagging}
-\usetag{ans}% 注释掉该行语句不显示答案
-\usepackage{ulem}
-\newcommand\myuline{\bgroup\markoverwith
-	{\textcolor{black}{\rule[-0.5ex]{2pt}{0.4pt}}}\ULon}
-\newcommand{\answer}[1]{\iftagged{ans}{\textcolor{red}{\uline{#1}}}{
-	{\color{white}\myuline{#1}}}}
-	
+% \usepackage{xcolor}
+% \usepackage{tagging}
+% \usetag{ans}% 注释掉该行语句不显示答案
+% \usepackage{ulem}
+% \newcommand\myuline{\bgroup\markoverwith
+%     {\textcolor{black}{\rule[-0.5ex]{2pt}{0.4pt}}}\ULon}
+% \newcommand{\answer}[1]{\iftagged{ans}{\textcolor{red}{\uline{#1}}}{
+%     {\color{white}\myuline{#1}}}}
+    
+% 章节样式
+% \usepackage{titlesec}    
+% \titleformat{\section}[block]{\LARGE\bfseries}{第 \arabic{section} 章}{1em}{}
+
 %% enumerate style
 %% counter: \roman, \Roman, \arabic, \alph, \Alph, \fnsymbol
 % \renewcommand{\labelenumi}{(\arabic{enumi})}
@@ -260,7 +268,6 @@ linkcolor=blue
 \theoremstyle{remark}\newtheorem*{remark}{注}
 \theoremstyle{remark}\newtheorem*{hint}{提示}
 \theoremstyle{definition}\newtheorem{definition}{定义}[subsection]
-
 % Theorem env
 % \theoremstyle{definition}\newtheorem{theorem}{Theorem}[subsection]
 % \theoremstyle{definition}\newtheorem{proposition}[theorem]{Proposition}
@@ -792,8 +799,8 @@ snippet rvec "row vector" iAm
 endsnippet
 
 priority 300
-snippet int "integral" wAm
-\int_{${1:-\infty}}^{${2:\infty}} ${3} \\mathrm{d}${4:x} $0
+snippet `(?<!\\)int` "integral" wAm
+\\int_{${1:-\infty}}^{${2:\infty}} ${3} \\mathrm{d}${4:x} $0
 endsnippet
 
 priority 100
@@ -801,7 +808,7 @@ snippet `(?<!\\)(sin|cos|tan|arccot|cot|csc|ln|log|exp|star|perp)` "ln" wAm
 \\``rv = m[1]``
 endsnippet
 
-snippet `(?<!\\)(det|diag)` "operatorname" wAm
+snippet `(?<!\\)(det|diag|sgn|ker|rank)` "operatorname" wAm
 \\operatorname{``rv = m[1]``}
 endsnippet
 
