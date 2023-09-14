@@ -194,6 +194,7 @@ snippet template "LaTeX template" b
 \usepackage{amsmath,amsthm,amssymb,graphicx,mathtools,tikz}
 \usetikzlibrary{positioning} 
 \usepackage{harpoon}
+\usepackage{extarrows} % 长等号 \xlongequal[sub-script]{super-script} https://www.latexstudio.net/archives/8004.html
 
 %% figure
 \usepackage{subfigure}
@@ -451,6 +452,10 @@ snippet CC "R" iAm
 \mathbb{C}^{$1}
 endsnippet
 
+snippet KK "R" iAm
+\mathbb{K}^{$1}
+endsnippet
+
 snippet NN "N" iAm
 \mathbb{N}
 endsnippet
@@ -631,6 +636,10 @@ snippet yjj "yj" iAm
 y_{j}
 endsnippet
 
+priority 5000
+snippet `(\d[a-zA-Z]|\\varphi|\\Varphi)ii` "?i" iAm
+``rv = m[1]``_{i}
+endsnippet
 
 snippet `(\d[a-zA-Z]|\\mu|\\alpha|\\sigma|\\rho|\\beta|\\gamma|\\delta|\\zeta|\\eta|\\varepsilon|\\theta|\\iota|\\kappa|\\vartheta|\\lambda|\\nu|\\pi|\\rho|\\tau|\\upsilon|\\phi|\\chi|\\psi|\\omega|\\Gamma|\\Delta|\\Theta|\\Lambda|\\Xi|\\Pi|\\Sigma|\\Upsilon|\\Phi|\\Psi|\\Omega)ii` "?i" iAm
 ``rv = m[1]``_{i}
@@ -800,7 +809,7 @@ endsnippet
 
 priority 300
 snippet `(?<!\\)int` "integral" wAm
-\\int_{${1:-\infty}}^{${2:\infty}} ${3} \\mathrm{d}${4:x} $0
+\\int_{${1:-\infty}}^{${2:+\infty}} ${3} \\mathrm{d}${4:x} $0
 endsnippet
 
 priority 100
@@ -810,6 +819,10 @@ endsnippet
 
 snippet `(?<!\\)(det|diag|sgn|ker|rank)` "operatorname" wAm
 \\operatorname{``rv = m[1]``}
+endsnippet
+
+snippet `(?<!\\)(span|Span)` "operatorname" wAm
+\\operatorname{Span}
 endsnippet
 
 priority 10000
